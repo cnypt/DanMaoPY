@@ -1,0 +1,43 @@
+﻿                         17个新手常见Python运行时错误
+
+1) 忘记在if,elif,else,for,while,class,def声明末尾添加:(导致 “SyntaxError ：invalid syntax”)	
+	该错误将发生在类似如下代码中：
+		if spam == 42
+			print('Hello!')	
+2) 	使用 = 而不是 ==（导致“SyntaxError: invalid syntax”）
+ = 是赋值操作符而 == 是等于比较操作。该错误发生在如下代码中：
+	if spam = 42:
+		print('Hello!')		 
+3)  错误的使用缩进量。（导致”IndentationError：unexpected indent”、“IndentationError：unindent does not match any outer indetation level”以及“IndentationError：expected an indented block”）
+    记住缩进量增加只用在以：结束的语句之后，而之后必须恢复到之前的缩进格式。该错误发生在如下代码中：
+	
+	print('Hello!')
+		print('Howdy')
+	或者：
+	if spam == 42:
+		print('Hello')
+	  print('Howdy')
+	或者：
+	if spam == 42:
+	print('Hello')
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

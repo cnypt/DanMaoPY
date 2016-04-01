@@ -1,0 +1,15 @@
+queue = deque()
+visited = set()
+url = 'http://news.dbanotes.net'  # 入口页面, 可以换成别的
+queue.append(url)
+
+url = queue.popleft()  # 队首元素出队
+visited |= {url}  # 标记为已访问
+visited.add(url)  # 标记为已访问
+      （问题来了  这两个方法是不是同一个意思）
+
+
+
+
+
+

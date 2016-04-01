@@ -1,0 +1,182 @@
+﻿0.
+    python 中的PIP命令 
+    例如：pip install Pillow  改成  python -m pip install Pillow
+0.
+    在windows中安装python插件 
+    需刷入命令  python setup.py install
+
+
+1.
+	if x:
+		print('True')
+	只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
+2.python占位符
+>>> 'Hello, %s' % 'world'
+'Hello, world'
+>>> 'Hi, %s, you have $%d.' % ('Michael', 1000000)
+'Hi, Michael, you have $1000000.'
+你可能猜到了，%运算符就是用来格式化字符串的。在字符串内部，%s表示用字符串替换，%d表示用整数替换，有几个%?占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个%?，括号可以省略。
+有些时候，字符串里面的%是一个普通字符怎么办？这个时候就需要转义，用%%来表示一个%：
+
+3.在Python中，定义一个函数要使用def语句，依次写出函数名、括号、括号中的参数和冒号:，然后，在缩进块中编写函数体，函数的返回值用return语句返回。
+
+我们以自定义一个求绝对值的my_abs函数为例：
+def my_abs(x):
+    if x >= 0:
+        return x
+    else:
+        return -x
+
+4.函数调用
+默认参数可以简化函数的调用。设置默认参数时，有几点要注意：
+
+一是必选参数在前，默认参数在后，否则Python的解释器会报错（思考一下为什么默认参数不能放在必选参数前面）；
+
+二是如何设置默认参数。
+
+当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数。
+
+使用默认参数有什么好处？最大的好处是能降低调用函数的难度。
+
+5.切片
+在很多编程语言中，针对字符串提供了很多各种截取函数（例如，substring），其实目的就是对字符串切片。Python没有针对字符串的截取函数，只需要切片一个操作就可以完成，非常简单。
+
+6.迭代
+如何判断一个对象是可迭代对象呢？方法是通过collections模块的Iterable类型判断：
+>>> from collections import Iterable
+>>> isinstance('abc', Iterable) # str是否可迭代
+True
+
+7.还可以使用两层循环，可以生成全排列：
+>>> [m + n for m in 'ABC' for n in 'XYZ']
+['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
+
+8.这些可以直接作用于for循环的对象统称为可迭代对象：Iterable。
+可以使用isinstance()判断一个对象是否是Iterable对象：
+
+>>> from collections import Iterable
+>>> isinstance([], Iterable)
+True
+
+可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。
+可以使用isinstance()判断一个对象是否是Iterator对象：
+
+>>> from collections import Iterator
+>>> isinstance((x for x in range(10)), Iterator)
+True
+
+你可能会问，为什么list、dict、str等数据类型不是Iterator？
+
+这是因为Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。
+
+Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。
+
+9.凡是可作用于for循环的对象都是Iterable类型；
+凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；
+集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。
+
+10.把函数作为参数传入，这样的函数称为高阶函数，函数式编程就是指这种高度抽象的编程范式。
+def add(x, y, f):
+    return f(x) + f(y)
+当我们调用add(-5, 6, abs)时，参数x，y和f分别接收-5，6和abs
+
+11.
+>>> def f(x):
+...     return x * x
+...
+>>> r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+>>> list(r)
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+map()传入的第一个参数是f，即函数对象本身。由于结果r是一个Iterator，Iterator是惰性序列，因此通过list()函数让它把整个序列都计算出来并返回一个list。
+
+12.我们在模块里公开greeting()函数，而把内部逻辑用private函数隐藏起来了，这样，调用greeting()函数不用关心内部的private函数细节
+def _private_1(name):
+    return 'Hello, %s' % name
+
+def _private_2(name):
+    return 'Hi, %s' % name
+
+def greeting(name):
+    if len(name) > 3:
+        return _private_1(name)
+    else:
+        return _private_2(name)
+13.序列化，反序列化的功能。
+我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思。
+
+序列化之后，就可以把序列化后的内容写入磁盘，或者通过网络传输到别的机器上。
+
+反过来，把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。
+
+14.
+MUA：Mail User Agent——邮件用户代理
+MTA：Mail Transfer Agent
+MDA：Mail Delivery Agent——邮件投递代理
+一封电子邮件的旅程就是：
+
+发件人 -> MUA -> MTA -> MTA -> 若干个MTA -> MDA <- MUA <- 收件人
+有了上述基本概念，要编写程序来发送和接收邮件，本质上就是：
+
+编写MUA把邮件发到MTA；
+
+编写MUA从MDA上收邮件。
+
+发邮件时，MUA和MTA使用的协议就是SMTP：Simple Mail Transfer Protocol，后面的MTA到另一个MTA也是用SMTP协议。
+
+收邮件时，MUA和MDA使用的协议有两种：POP：Post Office Protocol，目前版本是3，俗称POP3；IMAP：Internet Message Access Protocol，目前版本是4，优点是不但能取邮件，还可以直接操作MDA上存储的邮件，比如从收件箱移到垃圾箱，等等。
+
+15.  用SQLite前
+要操作关系数据库，首先需要连接到数据库，一个数据库连接称为Connection；
+连接到数据库后，需要打开游标，称之为Cursor，通过Cursor执行SQL语句，然后，获得执行结果。
+
+16.  WSGI：Web Server Gateway Interface。  Web服务网关接口。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
