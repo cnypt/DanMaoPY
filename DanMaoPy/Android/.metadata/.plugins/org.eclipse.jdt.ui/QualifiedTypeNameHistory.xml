@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.view.MyGridView"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.daywork.signin.MySigninActivity"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.utils.Json2list"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.utils.SelectPicPopupWindow"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.Out.MyOutListActivity"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.Leave.MyLeaveListActivity"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.Out.StaffOutListActivity"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.Leave.StaffLeaveListActivity"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.utils.Tools"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.utils.AndroidUtils"/>
+<fullyQualifiedTypeName name="com.yhsy.oamanager.utils.ShowImageActivity"/>
+</qualifiedTypeNameHistroy>
